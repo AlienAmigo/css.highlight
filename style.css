@@ -1,0 +1,17 @@
+.block {
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.input {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #000;
+}
+
+#string1::highlight(missing-words-1),
+#string2::highlight(missing-words-2) {
+  background-color: #f00;
+  color: #000;
+  text-decoration: none;
+}
