@@ -6,31 +6,32 @@ const setHighlight = (el1, el2) => {
 
   const [rangesStr1, rangesStr2] = findMissingWordRanges(str1, str2);
 
-  // Создаем объекты Range для подсветки
-  function createHighlightRanges(str, ranges) {
+  // Создаём подсветку на основе переданных элементов (не ID!)
+  function createHighlightRanges(element, ranges) {
     const highlight = new Highlight();
+
+    // Убедимся, что элемент существует и содержит текстовый узел
+    if (!element || !element.firstChild) return highlight;
+
+    const textNode = element.firstChild;
 
     for (const [start, end] of ranges) {
       const range = new Range();
-      range.setStart(new Text(str), start);
-      range.setEnd(new Text(str), end + 1);
+      range.setStart(textNode, start);
+      range.setEnd(textNode, end + 1);
       highlight.add(range);
     }
 
     return highlight;
   }
 
-  // Создаем подсветки для обеих строк
-  const highlightStr1 = createHighlightRanges(str1, rangesStr1);
-  const highlightStr2 = createHighlightRanges(str2, rangesStr2);
+  // Создаём подсветки, передавая сами элементы (el1, el2)
+  const highlightStr1 = createHighlightRanges(el1, rangesStr1);
+  const highlightStr2 = createHighlightRanges(el2, rangesStr2);
 
   // Регистрируем подсветки
   CSS.highlights.set('missing-words-1', highlightStr1);
   CSS.highlights.set('missing-words-2', highlightStr2);
-
-  // Добавляем строки в DOM
-  el1.textContent = str1;
-  el2.textContent = str2;
 };
 
 export { setHighlight };

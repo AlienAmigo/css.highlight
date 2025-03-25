@@ -12,9 +12,13 @@ const elField2 = document.querySelector('#string2');
 
 setHighlight(elField1, elField2);
 
-elField1.addEventListener('change', (e) => {
+const handleOnChange = (e) => {
   setHighlight(elField1, elField2);
+};
+
+elField1.addEventListener('inpute', (e) => {
+  handleOnChange(e);
 });
-elField2.addEventListener('change', (e) => {
-  setHighlight(elField1, elField2);
+elField2.addEventListener('input', (e) => {
+  handleOnChange(e);
 });
