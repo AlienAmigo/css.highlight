@@ -9,9 +9,14 @@
   border: 1px solid #000;
 }
 
-#string1::highlight(missing-words-1),
+#string1::highlight(missing-words-1) {
+  background-color: #ffcccc;
+  color: #ff0000;
+  text-decoration: underline;
+}
+
 #string2::highlight(missing-words-2) {
-  background-color: #f00;
-  color: #000;
-  text-decoration: none;
+  background-color: #ccffcc;
+  color: #009900;
+  text-decoration: underline;
 }
