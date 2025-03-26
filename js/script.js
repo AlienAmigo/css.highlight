@@ -1,10 +1,5 @@
 import { setHighlight } from './setHighlight.js';
-
-if (window.CSS && CSS.highlights) {
-  console.log('window.CSS CSS.highlights enable');
-} else {
-  console.log('window.CSS CSS.highlights disable');
-}
+import { setHighlightViaSpan } from './setHighlightViaSpan.js';
 
 // =============
 const elField1 = document.querySelector('#string1');
